@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Referer Leak Test</title>
+</head>
+<body>
+  <h1>Referer Leak Test</h1>
+  <p>Check the URL for leaked tokens:</p>
+  <div id="output"></div>
+  <script>
+    // Extract the Referer from the URL (if leaked)
+    const urlParams = new URLSearchParams(window.location.search);
+    const referer = urlParams.get('referer') || "No Referer leaked.";
+    
+    // Display it on the page (for manual checking)
+    document.getElementById("output").innerHTML = `
+      <strong>Referer Header:</strong><br>
+      <code>${referer}</code>
+    `;
+    
+    // Optional: Log to console (press F12 to see)
+    console.log("Referer:", referer);
+  </script>
+</body>
+</html>
